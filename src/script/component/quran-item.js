@@ -28,9 +28,11 @@ class QuranItem extends HTMLElement {
 
           .quran-info {
             padding: 24px;
+            color: white;
           }
           .quran-info > h2 {
             font-weight: lighter;
+
           }
           .quran-info > p {
             margin-top: 10px;
@@ -44,8 +46,10 @@ class QuranItem extends HTMLElement {
         
 
         <div class="quran-info">
-          <h2>${this._quran.nomor}</h2>
-          <p>${this._quran.nama}</p>
+          <h2>${this._quran.asma}</h2>
+          <p>Surat : ${this._quran.nama}</p>
+          <p>Arti : ${this._quran.arti}</p>
+          <p>Jumlah Ayat : ${this._quran.ayat}</p>
         </div>
       `;
     }

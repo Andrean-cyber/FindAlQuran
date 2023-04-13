@@ -9,6 +9,7 @@ body {
   background-image: url("/src/image/5110786.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 main {

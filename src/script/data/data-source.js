@@ -1,26 +1,20 @@
 class DataSource {
   static searchQuran(keyword) {
-    return fetch(`https://api.npoint.io/99c279bb173a6e28359c/data`)
+    return fetch(`https://api.npoint.io/99c279bb173a6e28359c`)
 
         .then(response => {
           return response.json();
         })
         .then(responseJson => {
-          console.log(responseJson)
+
           for (let i = 0; i < 114; i++) {
-            if (responseJson[i]["nama"] != keyword) {
-              return Promise.reject(`${keyword} is not found`);
+            if (responseJson["data"][i]["nama"] != keyword) {
+              continue;
             } else {
-              console.log(responseJson[i])
-              return Promise.resolve(responseJson[i]);
+              console.log(responseJson["data"][i]["nama"]);
+              return Promise.resolve([responseJson["data"][i]]);
             }
-            // if (data[i]["nama"] == keyword) {
-            //   const infoSurat = data[i];
-            //   const isiSurat = data["surat"][i];
-            //   return infoSurat
-            // } else {
-            //   return `${keyword} is not found`
-            // }
+          return Promise.reject(`${keyword} is not found`);
           }
           
         });
