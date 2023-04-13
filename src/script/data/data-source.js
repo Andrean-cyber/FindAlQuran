@@ -1,16 +1,28 @@
 class DataSource {
   static searchQuran(keyword) {
-    return fetch(`https://al-quran-8d642.firebaseio.com/data.json?print=pretty=${keyword}`)
+    return fetch(`https://api.npoint.io/99c279bb173a6e28359c/data`)
+
         .then(response => {
           return response.json();
         })
         .then(responseJson => {
           console.log(responseJson)
-          if (responseJson) {
-            return Promise.resolve(responseJson);
-          } else {
-            return Promise.reject(`${keyword} is not found`);
+          for (let i = 0; i < 114; i++) {
+            if (responseJson[i]["nama"] != keyword) {
+              return Promise.reject(`${keyword} is not found`);
+            } else {
+              console.log(responseJson[i])
+              return Promise.resolve(responseJson[i]);
+            }
+            // if (data[i]["nama"] == keyword) {
+            //   const infoSurat = data[i];
+            //   const isiSurat = data["surat"][i];
+            //   return infoSurat
+            // } else {
+            //   return `${keyword} is not found`
+            // }
           }
+          
         });
   }
 }
