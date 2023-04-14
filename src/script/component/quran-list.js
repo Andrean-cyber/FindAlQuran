@@ -7,20 +7,11 @@ class QuranList extends HTMLElement {
     this.shadowDOM = this.attachShadow({mode: 'open'});
   }
 
-  set qurans(qurans) {
-    this._qurans = qurans;
+  set quran(quran) {
+    this._quran = quran;
     this.render();
   }
 
-  render() {
-    this.shadowDOM.innerHTML = '';
-
-    this._qurans.forEach(quran => {
-      const quranItemElement = document.createElement('quran-item');
-      quranItemElement.quran = quran;
-      this.shadowDOM.appendChild(quranItemElement);
-    });
-  }
 
   renderError(message) {
     this.shadowDOM.innerHTML = `
@@ -37,6 +28,15 @@ class QuranList extends HTMLElement {
     `;
 
     this.shadowDOM.innerHTML += `<h2 class="placeholder">${message}</h2>`;
+  }
+  render() {
+    this.shadowDOM.innerHTML = '';
+
+    this._quran.forEach(quran => {
+      const quranItemElement = document.createElement('quran-item');
+      quranItemElement.quran = quran;
+      this.shadowDOM.appendChild(quranItemElement);
+    });
   }
 }
 
