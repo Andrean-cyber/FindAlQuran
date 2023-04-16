@@ -46,9 +46,9 @@ class QuranItem extends HTMLElement {
         
 
         <div class="quran-info">
-          <h2>${this._quran.number}</h2>
-          <p>Surat : ${this._quran.name}</p>
-        
+          <h2>${this._quran.verseId}</h2>
+          <p>${this._quran.ayahText}</p> 
+          <p>Arti : ${this._quran.indoText}</p>       
         </div>
       `;
     }
